@@ -7,7 +7,7 @@ author: RoverIsADog
 website: https://github.com/RoverIsADog/InfoHUD
 
 # 1.13 to avoid spigot loading the plugin in legacy mode.
-api-version: 1.13
+api-version: 1.21
 # Otherwise NullPointerException
 load: POSTWORLD
 main: com.roverisadog.infohud.InfoHUD

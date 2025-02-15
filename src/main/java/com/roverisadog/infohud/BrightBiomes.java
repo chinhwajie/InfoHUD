@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -23,7 +24,7 @@ public class BrightBiomes  {
 	public static long biomeUpdateDelay = 40L;
 
 	/** Biomes from THIS mc version that are considered bright. Generated on load config. */
-	public static EnumSet<Biome> brightBiomes;
+	public static Set<Biome> brightBiomes;
 	/** Default values in case the key-value is missing in the config. */
 	static final String[] defaultBrightBiomes = {
 			"DESERT", "DESERT_HILLS", "ICE_DESERT", "BEACH", "SNOWY_BEACH",

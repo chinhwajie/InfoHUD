@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.roverisadog.infohud.config.*;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
 import org.bukkit.block.Biome;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -33,9 +35,11 @@ public class CommandExecutor implements TabExecutor {
 	private static final List<String> BIOME_LIST = new ArrayList<>();
 	static {
 		BIOME_LIST.add("here");
-		for (Biome b : Biome.values()) {
-			BIOME_LIST.add(b.toString());
-		}
+		var ra = RegistryAccess.registryAccess();
+		var registry = ra.getRegistry(RegistryKey.BIOME);
+        for (Biome b : registry) {
+            BIOME_LIST.add(b.toString());
+        }
 	}
 
 	/** Instance of the plugin. */
@@ -478,7 +482,7 @@ public class CommandExecutor implements TabExecutor {
 			}
 			// Add some other biome
 			else {
-				biomeToAdd = Biome.valueOf(biomeName.toUpperCase());
+				biomeToAdd = Biomes.get(biomeName);
 			}
 		} catch (IllegalArgumentException e) {
 			Util.sendMsg(sender, Util.ERR
@@ -516,7 +520,7 @@ public class CommandExecutor implements TabExecutor {
 			if ((sender instanceof Player) && biomeName.equalsIgnoreCase("here"))
 				biomeToRemove = ((Player) sender).getLocation().getBlock().getBiome();
 			else
-				biomeToRemove = Biome.valueOf(biomeName.toUpperCase());
+				biomeToRemove = Biomes.get(biomeName);
 		} catch (IllegalArgumentException e) {
 			Util.sendMsg(sender, Util.ERR
 					+ "No biome matching \"" + Util.HLT + biomeName.toUpperCase()

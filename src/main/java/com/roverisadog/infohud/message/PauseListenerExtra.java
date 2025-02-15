@@ -1,12 +1,11 @@
 package com.roverisadog.infohud.message;
 
 import com.roverisadog.infohud.InfoHUD;
-import com.roverisadog.infohud.Util;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.spigotmc.event.entity.EntityMountEvent;
+import org.bukkit.event.entity.EntityMountEvent;
 
 /**
  * <b>The events in this file are not present in craftbukkit but present in spigot.</b>
